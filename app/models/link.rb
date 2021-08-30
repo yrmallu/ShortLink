@@ -1,5 +1,7 @@
 class Link < ApplicationRecord
 
+  # belongs_to :user
+
   validates :lookup_code, presence: true, uniqueness: true
   validates :original_url, presence: true
   validate :original_url_format

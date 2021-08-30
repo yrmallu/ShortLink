@@ -1,14 +1,16 @@
 class Shortener
 
-  attr_reader :url, :link_model
+  attr_reader :url, :link_model, :user
 
-  def initialize(url, link_model = Link)
+  def initialize(url, user = nil, link_model = Link)
     @url = url
+    @user = user
     @link_model = link_model
   end
 
   def generate_short_link
-    link_model.create(original_url: url, lookup_code: lookup_code)
+    link = link_model.find_by(original_url: url, user_id: user.try(:id))
+    link || link_model.create(original_url: url, lookup_code: lookup_code, user_id: user.try(:id))
   end
 
   def lookup_code

@@ -1,0 +1,16 @@
+<% if links %>
+  <table>
+    <tr>
+      <th>Lookup Code</th>
+      <th>URL</th>
+      <th>Clicks</th>
+    </tr>
+    <% links.each do |link| %>
+      <tr>
+        <td><%= link.lookup_code %></td>
+        <td><%= link.original_url %></td>
+        <td><%= link.count %></td>
+      </tr>
+    <% end %>
+  </table>
+<% end %>
