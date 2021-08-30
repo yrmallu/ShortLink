@@ -1,0 +1,8 @@
+<h1>URL Shortener</h1>
+
+<%= form_for @link, remote: true do |form|%>
+  <%= form.text_field :original_url %>
+  <%= form.submit %>
+<% end %>
+
+<div id='short-link'></div>
